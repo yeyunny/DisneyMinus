@@ -3,7 +3,7 @@ import { AiFillHome } from "react-icons/ai";
 function Nav() {
   return (
     <div>
-      <img src="/img/Banana.jpg" alt="merong"></img>
+      <img src="/img/Banana.jpg" alt="데이터를 불러오지 못했습니다"></img>
       <p>
         <AiFillHome /> 홈
       </p>
