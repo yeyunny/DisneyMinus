@@ -1,7 +1,8 @@
+import styled from "styled-components";
+import LoginModal from "../modal/LoginModal";
 import { AiFillHome, AiOutlinePlus, AiFillStar } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
 import { PiFilmReelFill, PiTelevisionFill } from "react-icons/pi";
-import styled from "styled-components";
 
 const Container = styled.div`
   display: flex;
@@ -47,6 +48,7 @@ function Nav() {
         <PiTelevisionFill />
         시리즈
       </MenuItem>
+      <LoginModal />
     </Container>
   );
 }
