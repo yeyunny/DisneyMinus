@@ -8,38 +8,46 @@ const Container = styled.div`
 `;
 
 const Img = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 30px;
+  height: 30px;
+  padding-top: 10px;
+`;
+
+const MenuItem = styled.p`
+  display: inline-flex;
+  align-items: center;
+  margin-right: 10px;
+  padding-left: 5px;
 `;
 
 function Nav() {
   return (
-    <div>
+    <Container>
       <Img src="/img/Banana.jpg" alt="데이터를 불러오지 못했습니다"></Img>
-      <p>
+      <MenuItem>
         <AiFillHome /> 홈
-      </p>
-      <p>
+      </MenuItem>
+      <MenuItem>
         <FiSearch />
         검색
-      </p>
-      <p>
+      </MenuItem>
+      <MenuItem>
         <AiOutlinePlus />
         관심 콘텐츠
-      </p>
-      <p>
+      </MenuItem>
+      <MenuItem>
         <AiFillStar />
         오리지널
-      </p>
-      <p>
+      </MenuItem>
+      <MenuItem>
         <PiFilmReelFill />
         영화
-      </p>
-      <p>
+      </MenuItem>
+      <MenuItem>
         <PiTelevisionFill />
         시리즈
-      </p>
-    </div>
+      </MenuItem>
+    </Container>
   );
 }
 
