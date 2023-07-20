@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
-const ModalDiv = styled.div`
-  padding-top: 60px;
-`;
+const ModalDiv = styled.div``;
 
 const BlackDiv = styled.div`
   width: 300px;
