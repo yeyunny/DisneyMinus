@@ -9,14 +9,15 @@ const Container = styled.div`
   display: flex;
   width: 100%;
   height: 60px;
+  box-sizing: border-box;
   background-color: pink;
 `;
 
 const Img = styled.img`
-  width: 30px;
-  height: 30px;
-  padding-top: 15px;
-  padding-left: 15px;
+  width: 50px;
+  height: 50px;
+  padding-top: 10px;
+  padding-left: 10px;
 `;
 
 const MenuItem = styled.p`
@@ -26,9 +27,14 @@ const MenuItem = styled.p`
   padding-left: 10px;
 `;
 
-const LogInOut = styled.p`
+const LogInModal = styled.div`
+  background-color: green;
+`;
+
+const LogIn = styled.p`
   display: flex;
   align-items: center;
+  text-align: center;
 `;
 
 function Nav() {
@@ -64,8 +70,10 @@ function Nav() {
         <PiTelevisionFill />
         시리즈
       </MenuItem>
-      <LogInOut onClick={loginHandler}>로그인</LogInOut>
-      {isClicked === true && <LoginModal />}
+      <LogInModal>
+        <LogIn onClick={loginHandler}>로그인</LogIn>
+        {isClicked === true && <LoginModal />}
+      </LogInModal>
     </Container>
   );
 }
