@@ -1,8 +1,9 @@
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Main from "./main/Main";
-import Detail from "./detail/Detail";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Nav from "./Nav/Nav";
 import GlobalStyle from "./styles/globalStyle";
+import Main from "./main/Main";
+import Detail from "./detail/Detail";
+import { Any } from "typeorm";
 
 const App = () => {
   return (
@@ -10,14 +11,10 @@ const App = () => {
       <GlobalStyle />
       <BrowserRouter>
         <Nav />{" "}
-        <Switch>
-          <Route path="/">
-            <Main />
-          </Route>
-          <Route path="/detail">
-            <Detail />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path="/" element={<Main />}></Route>
+          <Route path="/detail" element={<Detail Info={Any} />}></Route>
+        </Routes>
       </BrowserRouter>
     </>
   );
