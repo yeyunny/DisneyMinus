@@ -7,9 +7,6 @@ const MoviesDiv = styled.div``;
 
 export interface movieInfo {
   id: number;
-  // title: string;
-  // overview: string;
-  // vote_average: number;
   backdrop_path: string;
 }
 
