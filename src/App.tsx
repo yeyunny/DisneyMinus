@@ -13,7 +13,6 @@ const App = () => {
         <Nav />{" "}
         <Routes>
           <Route path="/" element={<Main />}></Route>
-          <Route path="/detail" element={<Detail Info={Any} />}></Route>
         </Routes>
       </BrowserRouter>
     </>
