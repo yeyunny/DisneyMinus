@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import { useEffect, useState } from "react";
 import { API_URL, API_KEY } from "../Config";
-import Image from "./Image";
+import Image from "../common/Image";
 
 const MoviesDiv = styled.div``;
 

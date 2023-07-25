@@ -2,10 +2,12 @@ import styled from "styled-components";
 
 const ContainerDiv = styled.div``;
 
+const ImgContainer = styled.img``;
+
 function Image({ url }: { url: string }) {
   return (
     <ContainerDiv>
-      <img src={`https://image.tmdb.org/t/p/w200/${url}`} alt="NONE" />
+      <ImgContainer src={`https://image.tmdb.org/t/p/w200/${url}`} alt="NONE" />
     </ContainerDiv>
   );
 }

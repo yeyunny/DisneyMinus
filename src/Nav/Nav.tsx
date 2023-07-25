@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import LoginModal from "../modal/LoginModal";
+import LoginModal from "./LoginModal";
 import { AiFillHome, AiOutlinePlus, AiFillStar } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
 import { PiFilmReelFill, PiTelevisionFill } from "react-icons/pi";
