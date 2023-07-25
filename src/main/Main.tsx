@@ -25,11 +25,13 @@ function Main() {
   }, []);
 
   return (
-    <MoviesDiv>
-      {Movies.map((movie: movieInfo) => (
-        <Image url={movie.backdrop_path} />
-      ))}
-    </MoviesDiv>
+    <div>
+      <MoviesDiv>
+        {Movies.map((movie: movieInfo) => (
+          <Image url={movie.backdrop_path} />
+        ))}
+      </MoviesDiv>
+    </div>
   );
 }
 
