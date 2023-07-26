@@ -1,13 +1,30 @@
 import styled from "styled-components";
 
-const ContainerDiv = styled.div``;
+const ContainerDiv = styled.div`
+  background-color: black;
+`;
 
-const ImgContainer = styled.img``;
+const ImgContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Img = styled.img`
+  border-radius: 10px;
+  width: 200px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 function Image({ url }: { url: string }) {
   return (
     <ContainerDiv>
-      <ImgContainer src={`https://image.tmdb.org/t/p/w200/${url}`} alt="NONE" />
+      <ImgContainer>
+        <Img src={`https://image.tmdb.org/t/p/w200/${url}`} alt="NONE" />
+      </ImgContainer>
     </ContainerDiv>
   );
 }
