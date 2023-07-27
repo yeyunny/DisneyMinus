@@ -68,7 +68,6 @@ function Main() {
             },
           };
           //장르별 영화 출력
-          // eslint-disable-next-line array-callback-return
           movieGenres.map((genres: Genres) => {
             fetch(
               `https://api.themoviedb.org/3/discover/movie?with_genres=${genres.id}`,

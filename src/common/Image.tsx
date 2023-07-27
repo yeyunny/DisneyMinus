@@ -1,13 +1,11 @@
 import styled from "styled-components";
 
-const ContainerDiv = styled.div`
-  background-color: black;
-`;
+const ContainerDiv = styled.div``;
 
 const ImgContainer = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
+  float: left;
+  background-color: yellow;
 `;
 
 const Img = styled.img`
@@ -15,8 +13,7 @@ const Img = styled.img`
   width: 200px;
   height: auto;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 5px;
 `;
 
 function Image({ url }: { url: string }) {
