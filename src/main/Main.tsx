@@ -91,8 +91,6 @@ function Main() {
         {Slide.map((slide: MovieInfo[], i) => (
           <div key={i}>
             {slide.slice(0, 5).map((imgUrl: MovieInfo, j: number) => {
-              console.log("img", imgUrl);
-
               return <Slider key={j} url={imgUrl.backdrop_path} />;
             })}
           </div>
