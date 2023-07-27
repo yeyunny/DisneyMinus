@@ -1,7 +1,6 @@
 import { styled } from "styled-components";
 import { useEffect, useState } from "react";
 import Image from "../common/Image";
-import Slider from "./Slider";
 
 const SliderDiv = styled.div``;
 
@@ -18,7 +17,7 @@ export interface MovieInfo {
 }
 
 function Main() {
-  const [Movies, setMovies] = useState<MovieInfo[]>([]);
+  const [Movies, setMovies] = useState<[MovieInfo[], number][]>([]);
 
   useEffect(() => {
     const options = {
@@ -45,6 +44,7 @@ function Main() {
             },
           };
           //장르별 영화 출력
+          // eslint-disable-next-line array-callback-return
           movieGenres.map((genres: Genres) => {
             fetch(
               `https://api.themoviedb.org/3/discover/movie?with_genres=${genres.id}`,
@@ -52,7 +52,7 @@ function Main() {
             )
               .then((response) => response.json())
               .then((response) => {
-                setMovies((prev) => [...prev, response.results]);
+                setMovies((prev) => [...prev, [response.results, genres.id]]);
               })
               .catch((err) => console.error(err));
           });
@@ -66,16 +66,14 @@ function Main() {
       <SliderDiv>{/* 인기있는 영화 : 장르별로 다시 받기 */}</SliderDiv>
 
       <MoviesDiv>
-        {/* 장르별로 보내기 : 장르별로 다시 받기 */}
-        {Movies.map((movie: MovieInfo, i: number) => {
-          return (
-            <Image
-              key={i}
-              title={movie.original_title}
-              url={movie.backdrop_path}
-            />
-          );
-        })}
+        {Movies.map(([movies, genreId], i) => (
+          <div key={i}>
+            <h2>Genre ID: {genreId}</h2>
+            {movies.map((movie: MovieInfo, j: number) => (
+              <Image key={j} url={movie.backdrop_path} />
+            ))}
+          </div>
+        ))}
       </MoviesDiv>
     </div>
   );
