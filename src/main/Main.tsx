@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import { useEffect, useState } from "react";
 import Image from "../common/Image";
+import Slider from "./Slider";
 
 const SliderDiv = styled.div``;
 
@@ -12,14 +13,37 @@ export interface Genres {
 }
 
 export interface MovieInfo {
-  original_title: string;
   backdrop_path: string;
 }
 
 function Main() {
+  const [Slide, setSlide] = useState<MovieInfo[][]>([]);
   const [Movies, setMovies] = useState<[MovieInfo[], number][]>([]);
 
   useEffect(() => {
+    //Slider 사진
+    const Slideroptions = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMGM0ZmNiNGVkOTQyNTUxYTAzZjRkYTNjNGY2NmIxNSIsInN1YiI6IjY0YmE3YWUwYWI2ODQ5MDEzOTE1NGY5OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.AnwgIaJa2kemgPHB2e0sbEN2jxRXDgbKhggk6YQXFlI",
+      },
+    };
+
+    fetch(
+      "https://api.themoviedb.org/3/discover/movie?primary_release_year=10",
+      Slideroptions
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        const slideImg = response.results.slice(0, 5);
+
+        setSlide((prev) => [...prev, slideImg]);
+      })
+      .catch((err) => console.error(err));
+
+    // movie 사진
     const options = {
       method: "GET",
       headers: {
@@ -63,24 +87,32 @@ function Main() {
 
   return (
     <div>
-      <SliderDiv>{/* 인기있는 영화 : 장르별로 다시 받기 */}</SliderDiv>
-
-      <MoviesDiv>
-        {Movies.map(([movies, genreId], i) => (
+      <SliderDiv>
+        {Slide.map((slide: MovieInfo[], i) => (
           <div key={i}>
-            <h2>Genre ID: {genreId}</h2>
-            {movies.map((movie: MovieInfo, j: number) => (
-              <Image key={j} url={movie.backdrop_path} />
-            ))}
+            {slide.slice(0, 5).map((imgUrl: MovieInfo, j: number) => {
+              console.log("img", imgUrl);
+
+              return <Slider key={j} url={imgUrl.backdrop_path} />;
+            })}
           </div>
         ))}
+      </SliderDiv>
+
+      <MoviesDiv>
+        {Movies.map(([movies, genreId], i) => {
+          return (
+            <div key={i}>
+              <h2>Genre ID: {genreId}</h2>
+              {movies.map((movie: MovieInfo, j: number) => {
+                return <Image key={j} url={movie.backdrop_path} />;
+              })}
+            </div>
+          );
+        })}
       </MoviesDiv>
     </div>
   );
 }
 
 export default Main;
-
-// 1. 메인에서 슬라이드 컴포넌트에 영화 5개만 보내기 : 필터 몰라
-// 2. 이미지 컴포넌트 갈 떄, 장르별로 보내기 : 손도 못댐
-// backdrop_path, genres_id, id
