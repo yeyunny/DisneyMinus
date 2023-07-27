@@ -19,11 +19,11 @@ const Img = styled.img`
   align-items: center;
 `;
 
-function Image({ url }: { url: string }) {
+function Image({ title, url }: { title: string; url: string }) {
   return (
     <ContainerDiv>
       <ImgContainer>
-        <Img src={`https://image.tmdb.org/t/p/w200/${url}`} alt="NONE" />
+        {/* <Img src={`https://image.tmdb.org/t/p/w200/${url}`} alt="NONE" /> */}
       </ImgContainer>
     </ContainerDiv>
   );
