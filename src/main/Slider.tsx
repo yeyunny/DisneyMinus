@@ -8,7 +8,7 @@ export default function Slider({ url }: { url: string }) {
   return (
     <div>
       <SliderContainer>
-        <Img src={`https://image.tmdb.org/t/p/${url}`} alt="NONE" />
+        <Img src={`https://image.tmdb.org/t/p/w200/${url}`} alt="NONE" />
       </SliderContainer>
     </div>
   );
