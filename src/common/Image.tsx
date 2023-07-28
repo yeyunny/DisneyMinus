@@ -16,7 +16,7 @@ const Img = styled.img`
   margin: 5px;
 `;
 
-function Image({ url }: { url: string }) {
+function Image({ url, genreId }: { url: string; genreId: number }) {
   return (
     <ContainerDiv>
       <ImgContainer>

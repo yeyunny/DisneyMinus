@@ -13,6 +13,7 @@ export interface Genres {
 }
 
 export interface MovieInfo {
+  genreId: number;
   backdrop_path: string;
 }
 
@@ -100,9 +101,18 @@ function Main() {
         {Movies.map(([movies, genreId], i) => {
           return (
             <div key={i}>
-              <h2>Genre ID: {genreId}</h2>
+              {/* <p>Genre ID: {genreId}</p> */}
               {movies.map((movie: MovieInfo, j: number) => {
-                return <Image key={j} url={movie.backdrop_path} />;
+                return (
+                  <div>
+                    <p>Genre ID: {genreId}</p>
+                    <Image
+                      key={j}
+                      url={movie.backdrop_path}
+                      genreId={movie.genreId}
+                    />
+                  </div>
+                );
               })}
             </div>
           );
