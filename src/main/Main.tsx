@@ -3,9 +3,15 @@ import { useEffect, useState } from "react";
 import Image from "../common/Image";
 import Slider from "./Slider";
 
-const SliderDiv = styled.div``;
+const SliderDiv = styled.div`
+  height: 300px;
+`;
 
 const MoviesDiv = styled.div``;
+
+const GenresDiv = styled.div`
+  height: 400px;
+`;
 
 export interface Genres {
   id: number;
@@ -32,18 +38,19 @@ function Main() {
       },
     };
 
-    fetch(
-      "https://api.themoviedb.org/3/discover/movie?primary_release_year=10",
-      Slideroptions
-    )
-      .then((response) => response.json())
-      .then((response) => {
-        const slideImg = response.results.slice(0, 5);
+    if (Slide.length <= 0) {
+      fetch(
+        "https://api.themoviedb.org/3/discover/movie?primary_release_year=10",
+        Slideroptions
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          const slideImg = response.results.slice(0, 5);
 
-        setSlide((prev) => [...prev, slideImg]);
-      })
-      .catch((err) => console.error(err));
-
+          setSlide((prev) => [...prev, slideImg]);
+        })
+        .catch((err) => console.error(err));
+    }
     // movie 사진
     const options = {
       method: "GET",
@@ -98,25 +105,16 @@ function Main() {
       </SliderDiv>
 
       <MoviesDiv>
-        {Movies.map(([movies, genreId], i) => {
-          return (
-            <div key={i}>
-              {/* <p>Genre ID: {genreId}</p> */}
-              {movies.map((movie: MovieInfo, j: number) => {
-                return (
-                  <div>
-                    <p>Genre ID: {genreId}</p>
-                    <Image
-                      key={j}
-                      url={movie.backdrop_path}
-                      genreId={movie.genreId}
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          );
-        })}
+        {Movies.map(
+          ([movies, genreId]: [movies: MovieInfo[], genreId: number], i) => {
+            return (
+              <GenresDiv>
+                <span>Genre ID: {genreId}</span>
+                <Image key={i} movie={movies} />
+              </GenresDiv>
+            );
+          }
+        )}
       </MoviesDiv>
     </div>
   );

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { MovieInfo } from "../main/Main";
 
 const ContainerDiv = styled.div``;
 
@@ -16,11 +17,18 @@ const Img = styled.img`
   margin: 5px;
 `;
 
-function Image({ url, genreId }: { url: string; genreId: number }) {
+function Image({ movie }: { movie: MovieInfo[] }) {
   return (
     <ContainerDiv>
       <ImgContainer>
-        <Img src={`https://image.tmdb.org/t/p/w200/${url}`} alt="NONE" />
+        {movie.map((item) => {
+          return (
+            <Img
+              src={`https://image.tmdb.org/t/p/w200/${item.backdrop_path}`}
+              alt="NONE"
+            />
+          );
+        })}
       </ImgContainer>
     </ContainerDiv>
   );
