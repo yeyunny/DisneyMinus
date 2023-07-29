@@ -12,7 +12,7 @@ const App = () => {
         <Nav />
         <Routes>
           <Route path="/" element={<Main />}></Route>
-          <Route path="/movieId" element={<Detail />}></Route>
+          <Route path="/detail/:id" element={<Detail />}></Route>
         </Routes>
       </BrowserRouter>
     </>
