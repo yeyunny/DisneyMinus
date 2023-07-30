@@ -2,7 +2,6 @@ import { styled } from "styled-components";
 import { useEffect, useState } from "react";
 import Image from "../common/Image";
 import Slider from "./Slider";
-import { useNavigate } from "react-router-dom";
 
 const SliderDiv = styled.div`
   height: 300px;
@@ -30,12 +29,6 @@ export interface MovieInfo {
 function Main() {
   const [Slide, setSlide] = useState<MovieInfo[][]>([]);
   const [Movies, setMovies] = useState<[MovieInfo[], number][]>([]);
-
-  const navigate = useNavigate();
-
-  const goToDetail = (id: number) => {
-    navigate(`/detail/${id}`);
-  };
 
   useEffect(() => {
     //Slider 사진
@@ -120,7 +113,7 @@ function Main() {
             return (
               <GenresDiv>
                 <span>Genre ID: {genreId}</span>
-                <Image key={i} movie={movies} />
+                <Image key={i} genreId={genreId} movie={movies} />
               </GenresDiv>
             );
           }

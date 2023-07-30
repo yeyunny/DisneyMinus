@@ -18,7 +18,7 @@ const Img = styled.img`
   margin: 5px;
 `;
 
-function Image({ movie }: { movie: MovieInfo[] }) {
+function Image({ movie, genreId }: { movie: MovieInfo[]; genreId: number }) {
   const navigate = useNavigate();
 
   return (
@@ -28,7 +28,7 @@ function Image({ movie }: { movie: MovieInfo[] }) {
           return (
             <Img
               onClick={() => {
-                navigate(`/detail/${item.id}`);
+                navigate(`/detail/${item.id}`, { state: genreId });
               }}
               src={`https://image.tmdb.org/t/p/w200/${item.backdrop_path}`}
               alt="NONE"
