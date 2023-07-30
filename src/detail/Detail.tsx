@@ -1,22 +1,14 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Image from "../common/Image";
-
-interface DetailInfo {
-  id: number;
-  original_title: string;
-  overview: string;
-  backdrop_path: string;
-}
+import { MovieInfo } from "../main/Main";
 
 function Detail() {
   const params = useParams();
 
   const movieId = params.id;
 
-  const navigate = useNavigate();
-
-  const [details, setDetails] = useState<DetailInfo | null>(null);
+  const [details, setDetails] = useState<MovieInfo | undefined>(undefined);
 
   useEffect(() => {
     const options = {
@@ -35,7 +27,10 @@ function Detail() {
       })
       .catch((err) => console.error(err));
   }, []);
-  console.log(details);
+
+  if (!details) {
+    return <div>Loading ...</div>;
+  }
 
   return (
     <div>

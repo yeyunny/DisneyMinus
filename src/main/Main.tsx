@@ -22,6 +22,8 @@ export interface Genres {
 export interface MovieInfo {
   id: number;
   genreId: number;
+  original_title: string;
+  overview: string;
   backdrop_path: string;
 }
 
