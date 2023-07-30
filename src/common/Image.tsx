@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { MovieInfo } from "../main/Main";
+import { useNavigate } from "react-router-dom";
 
 const ContainerDiv = styled.div``;
 
@@ -18,12 +19,17 @@ const Img = styled.img`
 `;
 
 function Image({ movie }: { movie: MovieInfo[] }) {
+  const navigate = useNavigate();
+
   return (
     <ContainerDiv>
       <ImgContainer>
         {movie.map((item) => {
           return (
             <Img
+              onClick={() => {
+                navigate(`/detail/${item.id}`);
+              }}
               src={`https://image.tmdb.org/t/p/w200/${item.backdrop_path}`}
               alt="NONE"
             />
