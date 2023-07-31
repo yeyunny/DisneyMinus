@@ -13,6 +13,7 @@ function Detail() {
 
   const location = useLocation();
   const genreId = location.state;
+
   const [movieList, setMovieList] = useState<MovieInfo[]>([]);
 
   useEffect(() => {
