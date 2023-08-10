@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import Image from "../common/Image";
 import { MovieInfo } from "../main/Main";
-import { response } from "express";
 
 function Detail() {
   const params = useParams();
