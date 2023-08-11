@@ -2,6 +2,11 @@ import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import Image from "../common/Image";
 import { MovieInfo } from "../main/Main";
+import { styled } from "styled-components";
+
+const MoviesDiv = styled.div`
+  background-color: white;
+`;
 
 function Detail() {
   const params = useParams();
@@ -59,7 +64,7 @@ function Detail() {
   }
 
   return (
-    <div>
+    <MoviesDiv>
       <img
         src={`https://image.tmdb.org/t/p/w200/${details?.backdrop_path}`}
         alt="NONE"
@@ -67,7 +72,7 @@ function Detail() {
       <h2>{details?.original_title}</h2>
       <p>{details?.overview}</p>
       <Image movie={movieList} genreId={genreId} />
-    </div>
+    </MoviesDiv>
   );
 }
 

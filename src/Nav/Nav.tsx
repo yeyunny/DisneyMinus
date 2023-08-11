@@ -11,7 +11,7 @@ const Container = styled.div`
   height: 60px;
   box-sizing: border-box;
   justify-content: space-between;
-  background-color: pink;
+  background-color: #03050a;
 `;
 
 const MenuContainer = styled.div`
@@ -28,10 +28,11 @@ const MenuItem = styled.p`
   display: flex;
   align-items: center;
   justify-content: center;
+  color: white;
 `;
 
 const LogInContainer = styled.div`
-  background-color: green;
+  background-color: #03050a;
 `;
 
 const LogIn = styled.p`
@@ -40,6 +41,7 @@ const LogIn = styled.p`
   align-items: center;
   height: 100%;
   padding-right: 10px;
+  color: white;
 `;
 
 function Nav() {

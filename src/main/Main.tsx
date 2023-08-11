@@ -7,7 +7,9 @@ const SliderDiv = styled.div`
   height: 300px;
 `;
 
-const MoviesDiv = styled.div``;
+const MoviesDiv = styled.div`
+  background-color: #030827;
+`;
 
 const GenresDiv = styled.div`
   height: 400px;

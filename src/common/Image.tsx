@@ -7,7 +7,6 @@ const ContainerDiv = styled.div``;
 const ImgContainer = styled.div`
   display: flex;
   float: left;
-  background-color: yellow;
 `;
 
 const Img = styled.img`
