@@ -4,9 +4,7 @@ import Image from "../common/Image";
 import { MovieInfo } from "../main/Main";
 import { styled } from "styled-components";
 
-const MoviesDiv = styled.div`
-  background-color: white;
-`;
+const MoviesDiv = styled.div``;
 
 function Detail() {
   const params = useParams();

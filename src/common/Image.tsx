@@ -7,6 +7,13 @@ const ContainerDiv = styled.div``;
 const ImgContainer = styled.div`
   display: flex;
   float: left;
+  margin-left: 50px;
+  background-color: skyblue;
+  width: 100vw;
+  overflow-x: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const Img = styled.img`
