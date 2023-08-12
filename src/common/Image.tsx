@@ -11,6 +11,7 @@ const ImgContainer = styled.div`
   background-color: skyblue;
   width: 100vw;
   overflow-x: scroll;
+
   &::-webkit-scrollbar {
     display: none;
   }

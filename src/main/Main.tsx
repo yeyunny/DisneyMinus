@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import { useEffect, useState } from "react";
 import Image from "../common/Image";
-import Slider from "./Slider";
+import Carousel from "./Carousel";
 
 const SliderDiv = styled.div`
   height: 300px;
@@ -56,6 +56,7 @@ function Main() {
         })
         .catch((err) => console.error(err));
     }
+
     // movie 사진
     const options = {
       method: "GET",
@@ -81,6 +82,7 @@ function Main() {
             },
           };
           //장르별 영화 출력
+          // eslint-disable-next-line array-callback-return
           movieGenres.map((genres: Genres) => {
             fetch(
               `https://api.themoviedb.org/3/discover/movie?with_genres=${genres.id}`,
@@ -95,7 +97,7 @@ function Main() {
         })
         .catch((err) => console.error(err));
     }
-  }, []);
+  }, [Movies.length, Slide.length]);
 
   return (
     <div>
@@ -103,7 +105,7 @@ function Main() {
         {Slide.map((slide: MovieInfo[], i) => (
           <div key={i}>
             {slide.slice(0, 5).map((imgUrl: MovieInfo, j: number) => {
-              return <Slider key={j} url={imgUrl.backdrop_path} />;
+              return <Carousel key={j} url={imgUrl.backdrop_path} />;
             })}
           </div>
         ))}
