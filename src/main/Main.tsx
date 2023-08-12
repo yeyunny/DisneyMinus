@@ -1,19 +1,6 @@
-import { styled } from "styled-components";
 import { useEffect, useState } from "react";
 import Image from "../common/Image";
-import Carousel from "./Carousel";
-
-const SliderDiv = styled.div`
-  height: 300px;
-`;
-
-const MoviesDiv = styled.div`
-  background-color: #030827;
-`;
-
-const GenresDiv = styled.div`
-  height: 400px;
-`;
+import Carousel from "./CarouselImg";
 
 export interface Genres {
   id: number;
@@ -101,28 +88,24 @@ function Main() {
 
   return (
     <div>
-      <SliderDiv>
+      <div>
         {Slide.map((slide: MovieInfo[], i) => (
-          <div key={i}>
-            {slide.slice(0, 5).map((imgUrl: MovieInfo, j: number) => {
-              return <Carousel key={j} url={imgUrl.backdrop_path} />;
-            })}
-          </div>
+          <Carousel key={i} slide={slide} />
         ))}
-      </SliderDiv>
+      </div>
 
-      <MoviesDiv>
+      <div>
         {Movies.map(
           ([movies, genreId]: [movies: MovieInfo[], genreId: number], i) => {
             return (
-              <GenresDiv>
+              <div>
                 <span>Genre ID: {genreId}</span>
                 <Image key={i} genreId={genreId} movie={movies} />
-              </GenresDiv>
+              </div>
             );
           }
         )}
-      </MoviesDiv>
+      </div>
     </div>
   );
 }

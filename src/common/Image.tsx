@@ -6,10 +6,8 @@ const ContainerDiv = styled.div``;
 
 const ImgContainer = styled.div`
   display: flex;
-  float: left;
-  margin-left: 50px;
-  background-color: skyblue;
-  width: 100vw;
+  padding: 20px;
+  width: 100%;
   overflow-x: scroll;
 
   &::-webkit-scrollbar {
@@ -19,8 +17,6 @@ const ImgContainer = styled.div`
 
 const Img = styled.img`
   border-radius: 10px;
-  width: 200px;
-  height: auto;
   display: flex;
   margin: 5px;
 `;
