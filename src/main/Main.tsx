@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import Image from "../common/Image";
 import Carousel from "./CarouselImg";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { movieActions } from "../store/movie";
+import MovieInfo from "../detail/MovieInfo";
 
 export interface Genres {
   id: number;
@@ -15,9 +19,17 @@ export interface MovieInfo {
   backdrop_path: string;
 }
 
+type test = {
+  getMovie: [MovieInfo[], number];
+};
+
 function Main() {
   const [Slide, setSlide] = useState<MovieInfo[][]>([]);
-  const [Movies, setMovies] = useState<[MovieInfo[], number][]>([]);
+
+  const dispatch = useDispatch();
+
+  const getMovies = useSelector((state: test) => state.getMovie);
+  console.log(getMovies);
 
   useEffect(() => {
     //Slider 사진
@@ -54,11 +66,12 @@ function Main() {
       },
     };
 
-    if (Movies.length <= 30) {
+    if (getMovies.length <= 30) {
       fetch("https://api.themoviedb.org/3/genre/movie/list", options)
         .then((response) => response.json())
         .then((response) => {
           const movieGenres = response.genres;
+          console.log("movie", movieGenres);
 
           const options2 = {
             method: "GET",
@@ -77,14 +90,14 @@ function Main() {
             )
               .then((response) => response.json())
               .then((response) => {
-                setMovies((prev) => [...prev, [response.results, genres.id]]);
+                dispatch(movieActions.getMovies([response.results, genres.id]));
               })
               .catch((err) => console.error(err));
           });
         })
         .catch((err) => console.error(err));
     }
-  }, [Movies.length, Slide.length]);
+  }, []);
 
   return (
     <div>
@@ -95,12 +108,12 @@ function Main() {
       </div>
 
       <div>
-        {Movies.map(
-          ([movies, genreId]: [movies: MovieInfo[], genreId: number], i) => {
+        {(getMovies as unknown as [MovieInfo[], number][]).map(
+          ([movieInfoArray, genreId], i) => {
             return (
-              <div>
+              <div key={i}>
                 <span>Genre ID: {genreId}</span>
-                <Image key={i} genreId={genreId} movie={movies} />
+                <Image movie={movieInfoArray} genreId={genreId} />
               </div>
             );
           }
