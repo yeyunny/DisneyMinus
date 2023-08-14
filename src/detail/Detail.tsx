@@ -10,12 +10,14 @@ const MovieTitle = styled.p`
   color: white;
   font-size: 36px;
   font-weight: 800;
+  width: 100%;
 `;
 
 const MovieDes = styled.p`
   color: white;
   font-size: 18px;
   font-weight: 400px;
+  width: 100%;
 `;
 
 function Detail() {
@@ -74,19 +76,18 @@ function Detail() {
   }
 
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
+    <div>
       <MoviesImg
         style={{
           background: `url(https://image.tmdb.org/t/p/w500/${details?.backdrop_path})`,
           backgroundSize: "cover",
-          width: "80%",
-          height: "80%",
+          width: "500px",
+          height: "300px",
         }}
-      >
-        <MovieTitle>{details?.original_title}</MovieTitle>
-        <MovieDes>{details?.overview}</MovieDes>
-        <Image movie={movieList} genreId={genreId} />
-      </MoviesImg>
+      />
+      <MovieTitle>{details?.original_title}</MovieTitle>
+      <MovieDes>{details?.overview}</MovieDes>
+      <Image movie={movieList} genreId={genreId} />
     </div>
   );
 }
