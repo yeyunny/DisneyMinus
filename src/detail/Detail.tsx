@@ -77,19 +77,15 @@ function Detail() {
     <div style={{ width: "100vw", height: "100vh" }}>
       <MoviesImg
         style={{
-          backgroundImage: `url(https://image.tmdb.org/t/p/w500/${details?.backdrop_path})`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: " cover",
+          background: `url(https://image.tmdb.org/t/p/w500/${details?.backdrop_path})`,
+          backgroundSize: "cover",
           width: "80%",
           height: "80%",
-          opacity: "0.6",
         }}
       >
-        <div>
-          <MovieTitle>{details?.original_title}</MovieTitle>
-          <MovieDes>{details?.overview}</MovieDes>
-          <Image movie={movieList} genreId={genreId} />
-        </div>
+        <MovieTitle>{details?.original_title}</MovieTitle>
+        <MovieDes>{details?.overview}</MovieDes>
+        <Image movie={movieList} genreId={genreId} />
       </MoviesImg>
     </div>
   );
