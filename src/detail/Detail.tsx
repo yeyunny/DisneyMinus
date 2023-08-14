@@ -4,7 +4,19 @@ import Image from "../common/Image";
 import { MovieInfo } from "../main/Main";
 import { styled } from "styled-components";
 
-const MoviesDiv = styled.div``;
+const MoviesImg = styled.div``;
+
+const MovieTitle = styled.p`
+  color: white;
+  font-size: 36px;
+  font-weight: 800;
+`;
+
+const MovieDes = styled.p`
+  color: white;
+  font-size: 18px;
+  font-weight: 400px;
+`;
 
 function Detail() {
   const params = useParams();
@@ -62,15 +74,24 @@ function Detail() {
   }
 
   return (
-    <MoviesDiv>
-      <img
-        src={`https://image.tmdb.org/t/p/w200/${details?.backdrop_path}`}
-        alt="NONE"
-      />
-      <h2>{details?.original_title}</h2>
-      <p>{details?.overview}</p>
-      <Image movie={movieList} genreId={genreId} />
-    </MoviesDiv>
+    <div style={{ width: "100vw", height: "100vh" }}>
+      <MoviesImg
+        style={{
+          backgroundImage: `url(https://image.tmdb.org/t/p/w500/${details?.backdrop_path})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: " cover",
+          width: "80%",
+          height: "80%",
+          opacity: "0.6",
+        }}
+      >
+        <div>
+          <MovieTitle>{details?.original_title}</MovieTitle>
+          <MovieDes>{details?.overview}</MovieDes>
+          <Image movie={movieList} genreId={genreId} />
+        </div>
+      </MoviesImg>
+    </div>
   );
 }
 
